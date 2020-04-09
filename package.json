@@ -2,13 +2,21 @@
   "name": "my-money-frontend",
   "version": "0.0.1",
   "description": "Fronten of my first 'real world' application with Node + React + Redux",
-  "main": "src/loader.js",
+  "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --progress --colors --inline --hot",
     "production": "webpack --progress -p"
   },
   "author": "Romero Medeiros | rom5jp",
-  "keywords": [],
+  "keywords": [
+    "react",
+    "redux",
+    "javascript",
+    "webpack",
+    "bootstrpap",
+    "admin-lte",
+    "jquery"
+  ],
   "license": "ISC",
   "devDependencies": {
     "admin-lte": "2.3.6",
