@@ -4,8 +4,8 @@
   "description": "Fronten of my first 'real world' application with Node + React + Redux",
   "main": "src/loader.js",
   "scripts": {
-    "dev": "nodemon",
-    "production": "pm2 start src/loader.js --name my-money-backend"
+    "dev": "webpack-dev-server --progress --colors --inline --hot",
+    "production": "webpack --progress -p"
   },
   "author": "Romero Medeiros | rom5jp",
   "keywords": [],
