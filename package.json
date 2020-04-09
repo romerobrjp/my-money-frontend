@@ -1,5 +1,5 @@
 {
-  "name": "my-money-app-frontend",
+  "name": "my-money-frontend",
   "version": "0.0.1",
   "description": "Fronten of my first 'real world' application with Node + React + Redux",
   "main": "src/loader.js",
