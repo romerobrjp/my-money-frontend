@@ -1,24 +1,30 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 
 import ContentHeader from '../common/template/contentHeader'
 import Content from '../common/template/content'
 import Row from '../common/layout/row'
 import ValueBox from '../common/widget/valueBox'
-import { getSummary } from './dashboardActions'
+import Axios from 'axios'
 
-class Dashboard extends Component {
+const BASE_URL = 'http://localhost:3003/api'
+
+export default class Dashboard extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { credit: 0, debt: 0 }
+  }
+
   componentWillMount() {
-    this.props.getSummary()
+    Axios.get(`${BASE_URL}/billingCycles/summary`)
+         .then(resp => this.setState(resp.data))
   }
 
   render() {
-    const { credit, debt } = this.props.summary
+    const { credit, debt } = this.state
 
     return (
       <div>
-        <ContentHeader title='Dashboard' small='Redux Inside Version' />
+        <ContentHeader title='Dashboard' small='Without Redux' />
 
         <Content>
           <Row>
@@ -31,7 +37,3 @@ class Dashboard extends Component {
     )
   }
 }
-
-const mapStateToProps = state => ({summary: state.dashboard.summary})
-const mapDispatchToProps = dispatch => bindActionCreators({getSummary}, dispatch)
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
