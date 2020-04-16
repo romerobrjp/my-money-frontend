@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-export default props => (
-  <ul className='nav nav-tabs'>
-    {props.children}
-  </ul>
-)
+export default class TabHeader extends Component {
+  render() {
+    return (
+      <li>
+        <a
+          href='javascript:;'
+          data-toggle='tab'
+          data-target={this.props.target}
+        >
+          <i className={`fa fa-${this.props.icon}`}></i> {this.props.label}
+        </a>
+      </li>
+    )
+  }
+}
