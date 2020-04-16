@@ -1,25 +1,31 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 
 import ContentHeader from '../common/template/contentHeader'
 import Content from '../common/template/content'
 import Row from '../common/layout/row'
 import ValueBox from '../common/widget/valueBox'
+import { getSummary } from './dashboardActions'
 
 class Dashboard extends Component {
-render() {
-  const { credit, debt } = this.props.summary
+  componentWillMount() {
+    this.props.getSummary()
+  }
 
-  return (
+  render() {
+    const { credit, debt } = this.props.summary
+
+    return (
       <div>
-        <ContentHeader title='Dashboard' small='Beta Version' />
+        <ContentHeader title='Dashboard' small='Redux Inside Version' />
 
         <Content>
-        <Row>
-          <ValueBox cols='12 4' color='green' icon='bank' value={`R$ ${credit}`} text='Total Credits' />
-          <ValueBox cols='12 4' color='red' icon='credit-card' value={`R$ ${debt}`} text='Total Debts' />
-          <ValueBox cols='12 4' color='blue' icon='money' value={`R$ ${credit - debt}`} text='Balance' />
-        </Row>
+          <Row>
+            <ValueBox cols='12 4' color='green' icon='bank' value={`R$ ${credit}`} text='Total Credits' />
+            <ValueBox cols='12 4' color='red' icon='credit-card' value={`R$ ${debt}`} text='Total Debts' />
+            <ValueBox cols='12 4' color='blue' icon='money' value={`R$ ${credit - debt}`} text='Balance' />
+          </Row>
         </Content>
       </div>
     )
@@ -27,4 +33,5 @@ render() {
 }
 
 const mapStateToProps = state => ({summary: state.dashboard.summary})
-export default connect(mapStateToProps)(Dashboard)
+const mapDispatchToProps = dispatch => bindActionCreators({getSummary}, dispatch)
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)
