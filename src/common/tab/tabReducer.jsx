@@ -1,7 +1,7 @@
-const INIT_STATE = { selected: '' }
+const INITIAL_STATE = { selected: '' }
 
-export default (state = INIT_STATE, action) => {
-  switch (action) {
+export default (state = INITIAL_STATE, action) => {
+  switch (action.type) {
     case 'TAB_SELECTED':
       return { ...state, selected: action.payload }
     default:
