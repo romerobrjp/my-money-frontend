@@ -6,7 +6,7 @@ import TabReducer from '../common/tab/tabReducer'
 const rootReducer = combineReducers(
   { 
     dashboard: DashboardReducer,
-    tabReducer: TabReducer,
+    tab: TabReducer,
   }
 )
 
