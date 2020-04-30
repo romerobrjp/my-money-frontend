@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { toastr } from 'react-redux-toastr'
 
 const BASE_URL = 'http://localhost:3003/api'
 
@@ -12,11 +13,18 @@ export function getList() {
 }
 
 export function create(values) {
-  axios.get(`${BASE_URL}/billingCycles`, values)
-  console.log('create', values);
-
-  return {
-    type: 'CREATED'
-  }
+  console.log(values);
   
+  axios.get(`${BASE_URL}/billingCycles`, values)
+    .then(success => {
+      toastr.success('Success', 'Register created')
+    })
+    .catch(e => {
+      e.response.data.errors.forEach(error => {
+        toastr.error('Fail', error)
+      })
+    })
+    return {
+      type: 'CREATED'
+    }  
 }

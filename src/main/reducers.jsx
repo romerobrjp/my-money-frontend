@@ -4,6 +4,7 @@ import DashboardReducer from '../dashboard/dashboardReducer'
 import TabReducer from '../common/tab/tabReducer'
 import BillingCycleReducer from '../billingCycle/billingCycleReducer'
 import { reducer as FormReducer } from 'redux-form'
+import { reducer as ToastrReducer } from 'react-redux-toastr'
 
 const rootReducer = combineReducers(
   { 
@@ -11,6 +12,7 @@ const rootReducer = combineReducers(
     tab: TabReducer,
     billingCycle: BillingCycleReducer,
     form: FormReducer,
+    toastr: ToastrReducer,
   }
 )
 
