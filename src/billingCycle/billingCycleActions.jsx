@@ -10,3 +10,13 @@ export function getList() {
     payload: request
   }
 }
+
+export function create(values) {
+  axios.get(`${BASE_URL}/billingCycles`, values)
+  console.log('create', values);
+
+  return {
+    type: 'CREATED'
+  }
+  
+}
