@@ -32,5 +32,9 @@ export function create(values) {
     })
     return {
       type: 'CREATED'
-    }  
+    }
+}
+
+export function showUpdate(billingCycle) {
+  return [showTabs('tabUpdate'), selectTab('tabUpdate')]
 }

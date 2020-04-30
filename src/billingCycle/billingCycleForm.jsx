@@ -11,7 +11,7 @@ class BillingCycleForm extends React.Component {
         <div className='box-body'>
           <Field name='name' label='Name' component={LabelAndInput} cols='12 4' placeholder='Insert the name here' />
           <Field name='month' label='Month' component={LabelAndInput} cols='12 4' placeholder='Which month?' />
-          <Field name='year' label='Year' component={LabelAndInput} cols='12 4'  placeholder='Which year?' />
+          <Field name='year' label='Year' component={LabelAndInput} cols='12 4' placeholder='Which year?' />
         </div>
 
         <div className='box-footer'>
