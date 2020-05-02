@@ -16,19 +16,28 @@ export function getList() {
 }
 
 export function create(values) {
-  axios.post(`${BASE_URL}/billingCycles`, values)
-    .then(success => {
-      toastr.success('Success', 'Register created')
-      dispatch(init())
-    })
-    .catch(e => {
-      e.response.data.errors.forEach(error => {
-        toastr.error('Fail', error)
+  return submit(values, 'post')
+}
+
+export function update(values) {
+  return submit(values, 'put')
+}
+
+function submit(values, method) {
+  return dispatch => {
+    const id = values._id ? values._id : ''
+
+    axios[method](`${BASE_URL}/billingCycles/${id}`, values)
+      .then(success => {
+        toastr.success('Success', 'Operation done')
+        dispatch(init())
       })
-    })
-    return {
-      type: 'CREATED'
-    }
+      .catch(e => {
+        e.response.data.errors.forEach(error => {
+          toastr.error('Fail', error)
+        })
+      })
+  }
 }
 
 export function showUpdate(billingCycle) {
