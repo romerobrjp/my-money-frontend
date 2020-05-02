@@ -48,6 +48,7 @@ class BillingCycleList extends React.Component {
               <th>Name</th>
               <th>Month</th>
               <th>Year</th>
+              <th className='table-actions'>Actions</th>
             </tr>
           </thead>
 
