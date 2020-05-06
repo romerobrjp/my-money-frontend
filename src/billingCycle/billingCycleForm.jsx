@@ -17,7 +17,8 @@ class BillingCycleForm extends React.Component {
           <Field name='name' label='Name' component={LabelAndInput} cols='12 4' placeholder='Insert the name here' readOnly={readOnly} />
           <Field name='month' label='Month' component={LabelAndInput} cols='12 4' placeholder='Which month?' readOnly={readOnly} />
           <Field name='year' label='Year' component={LabelAndInput} cols='12 4' placeholder='Which year?' readOnly={readOnly} />
-          <ItemList cols='12' readOnly={readOnly} list={credits} field='credits' legend='Credits' />
+          <ItemList cols='12 12 12 6' readOnly={readOnly} list={credits} field='credits' legend='Credits' showStatus={true} />
+          <ItemList cols='12 12 12 6' readOnly={readOnly} list={credits} field='debts' legend='Debts' showStatus={true} />
         </div>
 
 
@@ -32,6 +33,9 @@ class BillingCycleForm extends React.Component {
 
 BillingCycleForm = reduxForm({ form: 'billingCycleForm', destroyOnUnmount: false })(BillingCycleForm)
 const selector = formValueSelector('billingCycleForm')
-const mapStateToProps = state => ({credits: selector(state, 'credits')})
+const mapStateToProps = state => ({
+  credits: selector(state, 'credits'),
+  debts: selector(state, 'debits'),
+})
 const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch)
 export default connect(mapStateToProps, mapDispatchToProps)(BillingCycleForm)

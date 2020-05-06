@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import { Field, arrayInsert, arrayRemove } from 'redux-form'
 import Grid from '../common/layout/grid'
 import Input from '../common/form/input'
+import If from '../common/operators/if'
 
 class ItemList extends React.Component {
   add(index, item = {}) {
@@ -27,7 +28,10 @@ class ItemList extends React.Component {
       <tr key={index}>
         <td><Field name={`${field}[${index}].name`} component={Input} placeholder='Enter the name here' readOnly={this.props.readOnly} /></td>
         <td><Field name={`${field}[${index}].value`} component={Input} placeholder='Enter the value here' readOnly={this.props.readOnly} /></td>
-        <td>
+        <If test={this.props.showStatus}>
+          <td><Field name={`${field}[${index}].status`} component={Input} placeholder='Enter the status' readOnly={this.props.readOnly} /></td>
+        </If>
+        <td className='table-actions-3'>
           <button
             type='button'
             className='btn btn-success'
@@ -63,6 +67,9 @@ class ItemList extends React.Component {
               <tr>
                 <th>Name</th>
                 <th>Value</th>
+                <If test={this.props.showStatus}>
+                  <th>Status</th>
+                </If>
                 <th>Actions</th>
               </tr>
             </thead>

@@ -16,3 +16,7 @@
 button {
   margin-left: 10px;
 }
+
+td.table-actions-3 {
+  min-width: 180px;
+}
