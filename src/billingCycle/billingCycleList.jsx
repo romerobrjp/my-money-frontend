@@ -27,7 +27,7 @@ class BillingCycleList extends React.Component {
           </button>
 
           <button
-            className='btn btn-danger ml-10'
+            className='btn btn-danger'
             onClick={() =>
               this.props.showDelete(bc)
             }
